@@ -37,7 +37,7 @@ import { CommonModule } from '@angular/common';
   `,
   styles: [`
     .portfolio-head { margin-bottom:1.25rem }
-    .portfolio-head h2 { font-family:'Playfair Display', serif; color:var(--brand-deep); font-size:2.2rem; margin:0 }
+    .portfolio-head h2 { font-family:'Merriweather Sans', sans-serif; color:var(--brand-deep); font-size:2.2rem; margin:0 }
     .portfolio-head p { color:var(--muted); margin:0.35rem 0 0 }
 
     .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1.25rem }

@@ -25,7 +25,7 @@ import { Component } from '@angular/core';
           </div>
         </div>
         <div class="about-photo" aria-hidden="true">
-          <img src="/img-home.png" alt="Thais Roza" />
+          <img src="/img-home-page.png" alt="Thaís Roza" />
         </div>
       </div>
     </section>
@@ -37,7 +37,7 @@ import { Component } from '@angular/core';
 
     .about-grid { position:relative; z-index:1; display:grid; grid-template-columns:1fr 420px; gap:1.0rem; align-items:center }
     .about-info { padding:1rem 0;  display:flex; flex-direction:column; justify-content:center }
-    .about-info h2 { font-family:'Playfair Display',serif; color:var(--text-dark); font-size:2.6rem; margin:0 0 0.5rem }
+    .about-info h2 { font-family:'Merriweather Sans',sans-serif; color:var(--text-dark); font-size:2.6rem; margin:0 0 0.5rem }
     .eyebrow { color:var(--muted); font-weight:600; margin-bottom:1rem }
 
     .info-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.45rem; margin-bottom:0.8rem }
@@ -57,19 +57,25 @@ import { Component } from '@angular/core';
     .btn-cta { background:var(--brand-deep); color:#fff; padding:0.55rem 0.9rem; border-radius:10px; text-decoration:none; font-weight:700 }
     .btn-muted { background:transparent; color:var(--brand-deep); padding:0.45rem 0.8rem; border-radius:10px; border:1px solid rgba(11,6,6,0.06); text-decoration:none }
 
-    .about-photo {  border-radius:18px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:0; transform:translateX(-18%); box-shadow:0 30px 80px rgba(123,22,48,0.16); }
-    .about-photo img { width:550px; height:550px; object-fit:cover; object-position:50% 28%; display:block }
+    .about-photo { position:relative; border-radius:18px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:0; transform:translateX(-12%); box-shadow:0 30px 80px rgba(123,22,48,0.12); }
+    .about-photo img { width:100%; height:100%; max-width:650px; max-height:650px; object-fit:cover; object-position:50% 28%; display:block }
 
     @media (max-width:1100px) {
       .about-grid { grid-template-columns:1fr 320px }
       .about-text { max-width:100% }
     }
+
+    /* Mobile: empilha colunas, esconde o painel decorativo e torna a imagem fluida */
     @media (max-width:900px) {
+      .about { margin:1rem; padding:1.5rem 0 }
       .about::after { display:none }
-      .about-grid { grid-template-columns:1fr; gap:1.25rem }
-      .about-photo { order:-1; height:320px }
-      .about-info h2 { font-size:1.8rem }
+      .about-grid { grid-template-columns:1fr; gap:1rem }
+      .about-photo { position:static; order:-1; width:100%; height:320px; transform:none; box-shadow:0 12px 30px rgba(0,0,0,0.06); border-radius:10px }
+      .about-photo img { width:100%; height:100%; object-fit:cover; object-position:50% 35% }
+      .about-info h2 { font-size:1.6rem }
       .info-cards { grid-template-columns:repeat(1,1fr) }
+      .about-text { max-width:100%; padding:0.9rem; font-size:1rem; line-height:1.6 }
+      .card { padding:0.5rem 0.6rem; font-size:0.95rem }
     }
   `]
 })
