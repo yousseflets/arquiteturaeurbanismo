@@ -17,8 +17,13 @@
     -webkit-font-smoothing:antialiased;
 }
 
+/* Ensure consistent box-sizing and prevent any viewport overflow on mobile */
+html { box-sizing: border-box; max-width: 100vw; }
+*, *::before, *::after { box-sizing: inherit; }
+body { max-width: 100vw; }
+
 /* Fix mobile: remove horizontal overflow, prevent horizontal touch-panning and force full-width container */
-html, body, app-root { overflow-x: hidden; touch-action: pan-y; }
+html, body, app-root { overflow-x: hidden; touch-action: pan-y; overscroll-behavior-x: none; }
 
 .instagram {
   width: 28px;
@@ -69,12 +74,14 @@ html, body, app-root { overflow-x: hidden; touch-action: pan-y; }
 
 @media (max-width:900px) {
 	.nav-btn { display:flex }
+	/* deslocar o botão do menu um pouco para a esquerda para ficar alinhado à borda */
+	.nav-btn { margin-left: -8px; transform: translateX(-6px); }
 	/* menu móvel: slide-in a partir da esquerda (não empurra conteúdo) */
 	.main-nav {
 	  display:flex;
 	  position:fixed;
 	  top:72px;
-	  left:0;
+	  left:-8px; /* puxar levemente para a esquerda no mobile */
 	  bottom:0;
 	  z-index:10001;
 	  flex-direction:column;
@@ -85,8 +92,9 @@ html, body, app-root { overflow-x: hidden; touch-action: pan-y; }
 	  box-shadow:0 18px 48px rgba(0,0,0,0.12);
 	  width:320px;
 	  max-width:80vw;
-	  box-sizing: border-box;
-	  transform: translateX(-110%);
+		  box-sizing: border-box;
+		  /* hide exactly the menu width + left offset to avoid partial exposure when panning */
+		  transform: translateX(calc(-100% - 8px));
 	  transition: transform 260ms cubic-bezier(.2,.9,.2,1);
 	  overflow:auto;
       height: 210px;

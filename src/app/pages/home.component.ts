@@ -31,9 +31,10 @@ import { CommonModule } from '@angular/common';
       <div class="container">
         <h2><i>Destaques</i></h2>
 
-        <div class="carousel" aria-roledescription="carousel" (mouseenter)="pause()" (mouseleave)="resume()">
+        <div class="carousel" aria-roledescription="carousel" (mouseenter)="pause()" (mouseleave)="resume()"
+          (pointerdown)="startDrag($event)" (pointermove)="onDrag($event)" (pointerup)="endDrag($event)" (pointercancel)="endDrag($event)" (pointerleave)="endDrag($event)">
           <div class="slides" [style.transform]="'translateX(' + (-current * 100) + '%)'">
-            <div class="slide" *ngFor="let img of slides; let i = index">
+            <div class="slide" *ngFor="let img of slides; let i = index" [class.active]="i === current">
                 <a routerLink="/portfolio" class="slide-link" aria-hidden="true">
                   <div class="slide-media">
                     <img [src]="img" [alt]="'Destaque ' + (i+1)" />
@@ -99,26 +100,29 @@ import { CommonModule } from '@angular/common';
     .testimonial-container { display:flex; flex-direction:column; align-items:center }
     .test-title { max-width:100%; width:auto; text-align:left; font-family:'Merriweather Sans', sans-serif; color:var(--brand-deep); margin:0.3rem }
     .testimonial-grid { max-width:1100px; width:100%; display:grid; grid-template-columns:1fr 420px; gap:2.5rem; justify-items:center; align-items:center }
-    .testimonial .quotes { padding:1rem 0; text-align:center }
-    .quote { font-size:1.15rem; line-height:1.75; background:#fff; padding:1.25rem 1.5rem; border-radius:12px; box-shadow:0 20px 48px rgba(11,6,6,0.07); border-left:8px solid var(--brand-deep); max-width:780px; text-align:center }
+    .testimonial .quotes { padding:1rem 0; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; width:100% }
+    .quote { font-size:1.15rem; line-height:1.75; background:#fff; padding:1.25rem 1.5rem; border-radius:12px; box-shadow:0 20px 48px rgba(11,6,6,0.07); border-left:8px solid var(--brand-deep); max-width:780px; width:100%; box-sizing:border-box; text-align:center; margin:0 auto }
     .quote-footer { margin-top:0.6rem; color:var(--brand-deep); font-weight:700 }
-    .testimonial .visual { justify-self:center }
-    .testimonial .visual img { width:380px; border-radius:8px; box-shadow:0 22px 60px rgba(0,0,0,0.08); display:block }
+    .testimonial .visual { justify-self:center; display:flex; justify-content:center; align-items:center }
+    .testimonial .visual img { width:380px; max-width:100%; border-radius:8px; box-shadow:0 22px 60px rgba(0,0,0,0.08); display:block; margin:0 auto }
     .home-projects h2 { margin-left:4.5rem; font-weight:600; color:var(--brand-deep); letter-spacing:0.2px }
     .carousel { position:relative; overflow:hidden; margin-top:1rem }
-    .slides { display:flex; transition:transform 320ms cubic-bezier(.2,.9,.2,1); box-sizing: border-box }
-    .slide { min-width:100%; padding:0.6rem; box-sizing: border-box }
-      .slide-link { display:block; border-radius:12px; box-shadow:0 12px 34px rgba(0,0,0,0.10); overflow:hidden; background:var(--bg-off) }
+    .slides { display:flex; transition:transform 520ms cubic-bezier(.22,.9,.3,1); box-sizing: border-box }
+    .slide { min-width:100%; padding:0.6rem; box-sizing: border-box; display:flex; justify-content:center }
+      .slide-link { display:block; border-radius:14px; box-shadow:0 18px 48px rgba(0,0,0,0.10); overflow:hidden; background:var(--bg-off); transition: transform 420ms cubic-bezier(.2,.9,.2,1), box-shadow 420ms ease }
+      .slide-link { transform: scale(.96) }
+      .slide.active .slide-link { transform: scale(1); box-shadow:0 36px 80px rgba(11,6,6,0.12) }
       .slide-media { height:340px; display:flex; align-items:center; justify-content:center }
-      .slide-media img { max-width:100%; max-height:100%; object-fit:contain; display:block }
+      .slide-media img { max-width:100%; max-height:100%; object-fit:cover; display:block }
+      .slide-caption { margin-top:0.6rem; text-align:center; font-weight:700; color:var(--brand-deep); font-size:0.95rem }
 
-    .ctrl { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.9); border:0; width:44px; height:44px; border-radius:8px; font-size:22px; color:var(--brand-deep); cursor:pointer }
+    .ctrl { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.92); border:0; width:46px; height:46px; border-radius:50%; font-size:22px; color:var(--brand-deep); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(0,0,0,0.06) }
     .ctrl.prev { left:8px }
     .ctrl.next { right:8px }
 
-    .dots { display:flex; gap:0.4rem; justify-content:center; margin-top:0.75rem }
-    .dots button { width:10px; height:10px; border-radius:50%; background:rgba(0,0,0,0.12); border:0 }
-    .dots button.active { background:var(--brand-deep) }
+    .dots { display:flex; gap:0.6rem; justify-content:center; margin-top:0.75rem }
+    .dots button { width:34px; height:8px; border-radius:8px; background:rgba(0,0,0,0.08); border:0; transition: all 220ms ease }
+    .dots button.active { background:var(--brand-deep); width:44px; height:10px }
 
     @media (max-width:700px) {
       .hero-text h1 { font-size:2rem }
@@ -151,8 +155,13 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
   slides = ['/ambiente-clean.webp','/arquitetura-residencial.jpg','/espaços-multifuncionais.webp','/natureza-ambiente-interno.webp'];
   current = 0;
-  autoplayInterval = 1500;
+  autoplayInterval = 3000;
   private _autoplayTimer: any = null;
+
+  // swipe/drag support
+  private _dragStartX: number | null = null;
+  private _dragDeltaX = 0;
+  private _isDragging = false;
 
   ngOnInit(): void {
     this.startAutoplay();
@@ -181,4 +190,32 @@ export class HomeComponent {
   prev() { this.current = (this.current - 1 + this.slides.length) % this.slides.length }
   next() { this.current = (this.current + 1) % this.slides.length }
   go(i: number) { this.current = i }
+
+  startDrag(e: PointerEvent) {
+    // begin drag
+    this._dragStartX = e.clientX;
+    this._dragDeltaX = 0;
+    this._isDragging = true;
+    this.clearAutoplay();
+    try { (e.target as Element).setPointerCapture?.(e.pointerId); } catch {}
+  }
+
+  onDrag(e: PointerEvent) {
+    if (!this._isDragging || this._dragStartX === null) return;
+    this._dragDeltaX = e.clientX - this._dragStartX;
+  }
+
+  endDrag(e: PointerEvent) {
+    if (!this._isDragging) return;
+    const delta = this._dragDeltaX;
+    const threshold = 60; // px
+    if (Math.abs(delta) > threshold) {
+      if (delta < 0) this.next(); else this.prev();
+    }
+    this._dragStartX = null;
+    this._dragDeltaX = 0;
+    this._isDragging = false;
+    this.startAutoplay();
+    try { (e.target as Element).releasePointerCapture?.(e.pointerId); } catch {}
+  }
 }
