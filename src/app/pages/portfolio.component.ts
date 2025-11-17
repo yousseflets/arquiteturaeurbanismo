@@ -63,11 +63,11 @@ import { CommonModule } from '@angular/common';
       .gallery { gap:0.6rem }
     }
 
-    /* Mobile lightbox fixes: ensure image fits viewport and no horizontal overflow */
+    /* Mobile lightbox fixes: centralizar imagem e evitar distorção */
     @media (max-width:700px) {
-      .lightbox { padding: 8px; align-items: flex-start; overflow:auto }
-      .lb-inner { width: calc(100% - 16px); max-width:100%; max-height: calc(100vh - 32px); padding: 8px; }
-      .lb-inner img { max-height: calc(100vh - 120px); width: auto; max-width:100%; box-shadow:none }
+      .lightbox { padding: 8px; align-items: center; justify-content: center; overflow:auto }
+      .lb-inner { width: calc(100% - 16px); max-width:100%; max-height: calc(100vh - 32px); padding: 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box }
+      .lb-inner img { width:100%; height:auto; max-width:100%; max-height: calc(100vh - 120px); box-shadow:none; display:block; margin:0 auto }
       .lb-caption { color:#fff; margin-top:0.45rem; text-align:center; font-size:0.95rem; padding:0 6px }
       .lb-close { right:8px; top:8px }
     }
