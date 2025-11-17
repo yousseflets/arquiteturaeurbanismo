@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global base styles */
+html, body, app-root { height: 100%; margin: 0; padding: 0; }
+body {
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	background: linear-gradient(180deg, #fbf9f8 0%, #f6f3f1 100%);
+	font-family: 'Merriweather Sans', sans-serif;
+	color: #2b1f1f;
+	overflow-x: hidden;
+}
+
+app-root { display: block; min-height: 100vh; }
+
+/* Utility to ensure images never overflow their containers */
+img { max-width: 100%; height: auto; display: block }
+
+/* small devices: reduce body horizontal padding if any */
+@media (max-width: 700px) {
+	body { padding-left: 0; padding-right: 0 }
+}
