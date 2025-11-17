@@ -106,8 +106,8 @@ import { CommonModule } from '@angular/common';
     .testimonial .visual img { width:380px; border-radius:8px; box-shadow:0 22px 60px rgba(0,0,0,0.08); display:block }
     .home-projects h2 { margin-left:4.5rem; font-weight:600; color:var(--brand-deep); letter-spacing:0.2px }
     .carousel { position:relative; overflow:hidden; margin-top:1rem }
-    .slides { display:flex; transition:transform 320ms cubic-bezier(.2,.9,.2,1) }
-    .slide { min-width:100%; padding:0.6rem }
+    .slides { display:flex; transition:transform 320ms cubic-bezier(.2,.9,.2,1); box-sizing: border-box }
+    .slide { min-width:100%; padding:0.6rem; box-sizing: border-box }
       .slide-link { display:block; border-radius:12px; box-shadow:0 12px 34px rgba(0,0,0,0.10); overflow:hidden; background:var(--bg-off) }
       .slide-media { height:340px; display:flex; align-items:center; justify-content:center }
       .slide-media img { max-width:100%; max-height:100%; object-fit:contain; display:block }
