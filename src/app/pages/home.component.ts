@@ -97,7 +97,7 @@ import { CommonModule } from '@angular/common';
     .profile-card p { margin:0; color:var(--muted); font-size:0.98rem }
     .testimonial { margin-top:2.6rem; color:var(--muted); font-style:italic }
     .testimonial-container { display:flex; flex-direction:column; align-items:center }
-    .test-title { width:1000px; text-align:left; font-family:'Merriweather Sans', sans-serif; color:var(--brand-deep); margin:0.3rem }
+    .test-title { max-width:100%; width:auto; text-align:left; font-family:'Merriweather Sans', sans-serif; color:var(--brand-deep); margin:0.3rem }
     .testimonial-grid { max-width:1100px; width:100%; display:grid; grid-template-columns:1fr 420px; gap:2.5rem; justify-items:center; align-items:center }
     .testimonial .quotes { padding:1rem 0; text-align:center }
     .quote { font-size:1.15rem; line-height:1.75; background:#fff; padding:1.25rem 1.5rem; border-radius:12px; box-shadow:0 20px 48px rgba(11,6,6,0.07); border-left:8px solid var(--brand-deep); max-width:780px; text-align:center }

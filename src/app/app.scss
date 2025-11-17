@@ -17,8 +17,8 @@
     -webkit-font-smoothing:antialiased;
 }
 
-/* Fix mobile: remove horizontal overflow and force full-width container */
-html, body { overflow-x: hidden; }
+/* Fix mobile: remove horizontal overflow, prevent horizontal touch-panning and force full-width container */
+html, body, app-root { overflow-x: hidden; touch-action: pan-y; }
 
 .instagram {
   width: 28px;
