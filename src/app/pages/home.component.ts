@@ -76,7 +76,7 @@ import { CommonModule } from '@angular/common';
     .hero-full { position:relative; min-height:50vh; display:flex; align-items:center; justify-content:center }
     .hero-inner { position:relative; z-index:2; padding:4.5rem 0 3rem; display:grid; grid-template-columns:460px 1fr; gap:2.2rem; align-items:center; width:100%; max-width:1100px; margin:0 auto }
     .hero-visual { position:relative; display:flex; align-items:center; justify-content:flex-start }
-    .hero-decor { position:absolute; left:-28px; top:6%; width:56px; height:360px; background:var(--brand-deep); border-radius:18px; z-index:0 }
+    .hero-decor { position:absolute; left:-28px; top:6%; width:56px; height:360px; background:var(--brand-deep); border-radius:18px; z-index:0; pointer-events:none }
     .hero-visual img { width:460px; height:360px; object-fit:cover; border-radius:10px; box-shadow:0 30px 80px rgba(11,6,6,0.12); position:relative; z-index:1 }
     .hero-text { max-width:560px; color:var(--text-dark); text-align:right; animation:heroIn .6s ease both }
     .hero-text h1 { font-size:3.8rem; margin:0 0 0.6rem; font-family:'Merriweather Sans', sans-serif; color:var(--brand-deep); letter-spacing:0.6px }

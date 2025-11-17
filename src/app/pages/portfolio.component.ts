@@ -50,8 +50,8 @@ import { CommonModule } from '@angular/common';
 
     /* lightbox */
     .lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.65); display:flex; align-items:center; justify-content:center; z-index:9999 }
-    .lb-inner { max-width:1100px; width:90%; max-height:85%; padding:1rem; background:transparent; display:flex; flex-direction:column; align-items:center }
-    .lb-inner img { max-width:100%; max-height:78vh; object-fit:contain; border-radius:8px; box-shadow:0 18px 40px rgba(0,0,0,0.5) }
+    .lb-inner { max-width:1100px; width:90%; max-height:85%; padding:1rem; background:transparent; display:flex; flex-direction:column; align-items:center; box-sizing:border-box }
+    .lb-inner img { max-width:100%; max-height:78vh; object-fit:contain; border-radius:8px; box-shadow:0 18px 40px rgba(0,0,0,0.5); display:block; margin:0 auto }
     .lb-caption { color:#fff; margin-top:0.6rem }
     .lb-close, .lb-prev, .lb-next { position:absolute; background:rgba(255,255,255,0.95); border:0; padding:0.6rem 0.9rem; border-radius:8px; cursor:pointer }
     .lb-close { right:20px; top:20px }
@@ -61,6 +61,15 @@ import { CommonModule } from '@angular/common';
     @media (max-width:900px) {
       .lb-prev, .lb-next { display:none }
       .gallery { gap:0.6rem }
+    }
+
+    /* Mobile lightbox fixes: ensure image fits viewport and no horizontal overflow */
+    @media (max-width:700px) {
+      .lightbox { padding: 8px; align-items: flex-start; overflow:auto }
+      .lb-inner { width: calc(100% - 16px); max-width:100%; max-height: calc(100vh - 32px); padding: 8px; }
+      .lb-inner img { max-height: calc(100vh - 120px); width: auto; max-width:100%; box-shadow:none }
+      .lb-caption { color:#fff; margin-top:0.45rem; text-align:center; font-size:0.95rem; padding:0 6px }
+      .lb-close { right:8px; top:8px }
     }
   `]
 })
