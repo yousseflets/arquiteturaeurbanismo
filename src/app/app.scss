@@ -56,9 +56,15 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 	/* make the brand full-width and center the logo; nav button is absolutely positioned to the left */
 	.brand { width:100%; display:flex; justify-content:center; align-items:center }
 	.header-inner .logo { margin:0; display:inline-flex; align-items:center }
+	/* aumentar logo no mobile para melhorar legibilidade */
+	.logo-mark { width:84px; height:84px }
+	.logo-text strong { font-size:1.12rem }
 	.nav-btn { position:absolute; left:8px; top:50%; transform:translateY(-50%); z-index:10002 }
 	/* ensure logo doesn't extend under the nav button - add left padding to header container if needed */
 	.site-header > .container.header-inner { padding-left:2.4rem }
+
+	/* reforçar proteção contra overflow horizontal em small viewports */
+	html, body, app-root, .site-main, .container { max-width:100vw; overflow-x:hidden; }
 }
 
 .container {
