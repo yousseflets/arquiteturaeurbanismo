@@ -181,13 +181,21 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 .contact-form input, .contact-form textarea { padding:0.6rem; border:1px solid #e6e1df; border-radius:6px }
 
 .site-footer { padding:1.25rem 0; color:var(--muted); font-size:0.9rem }
-.site-footer .footer-inner { display:flex; align-items:center; justify-content:space-between }
+.site-footer { padding:1.25rem 0; color:var(--muted); font-size:0.9rem; width:100%; overflow-x:hidden; }
+.site-footer .footer-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:100%; box-sizing:border-box; padding:0 1rem; }
 .site-footer .copy { color:var(--muted) }
 .site-footer .social { display:flex; gap:0.75rem }
 .site-footer .social-link { display:inline-flex; align-items:center; justify-content:center; padding:6px; border-radius:50%; background:#fff; color:var(--brand-deep); text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,0.06) }
-.site-footer .social-link img { width:44px; height:44px; display:block; border-radius:50%; object-fit:contain }
+.site-footer .social-link img { width:44px; height:44px; display:block; border-radius:50%; object-fit:contain; max-width:100%; }
 .site-footer .social-link svg { width:18px; height:18px; color:var(--brand-deep) }
 .site-footer .social-link:hover { background:rgba(123,22,48,0.04) }
+
+/* Defensive: ensure footer content never exceeds viewport on very narrow devices */
+@media (max-width:420px) {
+	.site-footer .footer-inner { padding-left:0.6rem; padding-right:0.6rem; background-color:var(--bg-off);	 }
+	.site-footer .copy { font-size:0.9rem }
+	.site-footer .social-link img { width:40px; height:40px }
+}
 
 @media (max-width:700px) {
 	.header-inner { gap:1rem }
