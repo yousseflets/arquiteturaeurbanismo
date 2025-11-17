@@ -134,6 +134,8 @@ import { CommonModule } from '@angular/common';
       .testimonial .visual { justify-self:center }
       .quote { font-size:1rem }
       .testimonial .visual img { width:100%; max-width:360px }
+      .hero-full { min-height:32vh }
+      .hero-inner { padding:1.2rem 0 }
     }
     /* Ajustes gerais para tablet/mobile: empilhar hero e ajustar imagens */
     @media (max-width:900px) {
