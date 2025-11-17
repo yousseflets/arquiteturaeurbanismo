@@ -70,12 +70,18 @@ import { Component } from '@angular/core';
       .about { margin:1rem; padding:1.5rem 0 }
       .about::after { display:none }
       .about-grid { grid-template-columns:1fr; gap:1rem }
-      .about-photo { position:static; order:-1; width:100%; height:320px; transform:none; box-shadow:0 12px 30px rgba(0,0,0,0.06); border-radius:10px }
-      .about-photo img { width:100%; height:100%; object-fit:cover; object-position:50% 35% }
+      .about-photo { position:static; order:-1; width:100%; height:260px; transform:none; box-shadow:0 12px 30px rgba(0,0,0,0.06); border-radius:10px }
+      .about-photo img { width:100%; height:100%; object-fit:cover; object-position:50% 18% }
       .about-info h2 { font-size:1.6rem }
       .info-cards { grid-template-columns:repeat(1,1fr) }
       .about-text { max-width:100%; padding:0.9rem; font-size:1rem; line-height:1.6 }
       .card { padding:0.5rem 0.6rem; font-size:0.95rem }
+    }
+
+    /* Extra small phones: reduce image height and focus more on the face */
+    @media (max-width:420px) {
+      .about-photo { height:220px }
+      .about-photo img { object-position:50% 12% }
     }
   `]
 })
