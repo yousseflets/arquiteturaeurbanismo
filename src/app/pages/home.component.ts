@@ -132,8 +132,8 @@ import { CommonModule } from '@angular/common';
       .profile-card .avatar { width:72px; height:72px }
       .testimonial-grid { grid-template-columns:1fr; gap:1rem }
       .testimonial .visual { justify-self:center }
-      .quote { font-size:1rem }
-      .testimonial .visual img { width:100%; max-width:360px }
+      .quote { font-size:1rem; max-width:690px}
+      .testimonial .visual img { width:100%; max-width:260px }
       .hero-full { min-height:32vh }
       .hero-inner { padding:1.2rem 0 }
     }
@@ -141,9 +141,9 @@ import { CommonModule } from '@angular/common';
     @media (max-width:900px) {
       .hero-inner { grid-template-columns:1fr; gap:1rem; padding:2.2rem 0 }
       .hero-visual { justify-content:center }
-      .hero-visual img { width:100%; max-width:420px; height:auto }
+      .hero-visual img { width:100%; max-width:220px; height:auto }
       .hero-text { text-align:center }
-      .hero-text .lead { text-align:center }
+      .hero-text .lead { text-align:center; }
       .profile-card { margin-top:1rem }
     }
     @media (max-width:900px) {

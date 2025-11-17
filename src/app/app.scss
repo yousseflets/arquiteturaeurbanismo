@@ -217,3 +217,26 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 	.site-footer .social-link { width:40px; height:40px }
 }
 
+/* Mobile fix: reduzir espaços verticais que criam área em branco no topo/entre elementos */
+@media (max-width:700px) {
+	.site-main { min-height: auto !important; padding: 0.6rem 0 !important; }
+	.hero { padding: 0.6rem 0 !important; }
+  /* garantir que o conteúdo do hero não receba margin superior extra */
+  .hero .hero-content { margin-top: 0 !important; }
+  /* caso haja um hero-visual grande, reduzir gap para caber melhor */
+	.hero-visuals { margin-top: 0.5rem }
+}
+
+/* Ajustes adicionais: fonte e compensação do painel decorativo no mobile */
+@media (max-width:700px) {
+	/* garantir que o painel decorativo (barra vinho) não sobreponha o conteúdo */
+	.hero { position: relative; padding-left: calc(28px + 0.4rem) !important; }
+	/* reduzir ainda mais a headline e melhorar encaixe */
+	.hero h1 { font-size: 1.45rem !important; line-height: 1.04 !important; margin: 0 0 0.2rem 0 !important; }
+	.hero .lead { font-size: 0.9rem !important; line-height: 1.35 !important; margin-bottom: 0.5rem !important; }
+	/* garantir que a coluna de conteúdo não tenha deslocamentos inesperados */
+	.hero .hero-content { margin-left: 0 !important; padding-left: 0 !important; }
+	/* manter o painel decorativo visível, mas sem sobrepor */
+	.hero-decor { left: 0; width: 32px; }
+}
+
