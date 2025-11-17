@@ -17,12 +17,19 @@ export class App {
   private _touchStartX: number | null = null;
   private _touchStartY: number | null = null;
   private _swipeAllowed = false;
+  // bound listener refs so we can remove them later
+  private _boundTouchStart?: (e: TouchEvent) => void;
+  private _boundTouchMove?: (e: TouchEvent) => void;
 
   constructor() {
     // bloqueia panning horizontal global, exceto quando o toque começar dentro do carrossel
     if (typeof window !== 'undefined' && 'addEventListener' in window) {
-      window.addEventListener('touchstart', this.onTouchStart.bind(this), { passive: true });
-      window.addEventListener('touchmove', this.onTouchMove.bind(this), { passive: false });
+      // store bound handlers to allow proper removal later
+      this._boundTouchStart = this.onTouchStart.bind(this);
+      this._boundTouchMove = this.onTouchMove.bind(this);
+      // use passive:false on touchstart so we can call preventDefault early if needed
+      window.addEventListener('touchstart', this._boundTouchStart, { passive: false });
+      window.addEventListener('touchmove', this._boundTouchMove, { passive: false });
     }
   }
 
@@ -38,6 +45,12 @@ export class App {
       if (target.closest('.carousel, .slides, .slide-media')) {
         this._swipeAllowed = true;
       }
+    }
+    // if the touch does not start in an allowed area, prevent default on start
+    // this avoids any horizontal panning from beginning (but preserves vertical scroll)
+    if (!this._swipeAllowed) {
+      // allow small vertical drags: do not prevent here, we'll prevent inside touchmove when gesture is horizontal
+      // keep this minimal to avoid blocking normal vertical scrolling
     }
   }
 
@@ -76,8 +89,8 @@ export class App {
   // remover listeners ao destruir (boa prática)
   ngOnDestroy() {
     if (typeof window !== 'undefined' && 'removeEventListener' in window) {
-      window.removeEventListener('touchstart', this.onTouchStart.bind(this));
-      window.removeEventListener('touchmove', this.onTouchMove.bind(this));
+      if (this._boundTouchStart) window.removeEventListener('touchstart', this._boundTouchStart);
+      if (this._boundTouchMove) window.removeEventListener('touchmove', this._boundTouchMove);
     }
     try { document.body.classList.remove('no-scroll'); } catch (err) {}
   }

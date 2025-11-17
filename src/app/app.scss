@@ -18,13 +18,15 @@
 }
 
 /* Ensure consistent box-sizing and prevent any viewport overflow on mobile */
-html { box-sizing: border-box; max-width: 100vw; }
+html { box-sizing: border-box; max-width: 100%; }
 *, *::before, *::after { box-sizing: inherit; }
-body { max-width: 100vw; }
+body { max-width: 100%; }
 
 /* Fix mobile: remove horizontal overflow, prevent horizontal touch-panning and force full-width container */
 html, body, app-root { overflow-x: hidden; touch-action: pan-y; overscroll-behavior-x: none; }
 
+/* Force strict no-horizontal-overflow across all viewports (important to stop panning on some devices) */
+html, body, app-root { overflow-x: hidden !important; touch-action: pan-y !important; overscroll-behavior-x: none !important; }
 /* quando o menu estiver aberto, bloquear qualquer scroll/touch na página */
 body.no-scroll { overflow: hidden; touch-action: none; }
 
@@ -65,6 +67,20 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 
 	/* reforçar proteção contra overflow horizontal em small viewports */
 	html, body, app-root, .site-main, .container { max-width:100vw; overflow-x:hidden; }
+}
+
+/* Additional mobile overflow fixes: remove decorative offsets that may push layout */
+@media (max-width:700px) {
+	/* hero decorative panel may extend outside viewport on some devices */
+	.hero-decor { left: 0 !important; width: 44px; height: 220px; }
+	/* about photo transform can push edges; reset on small screens */
+	.about-photo { transform: none !important; box-shadow: none; }
+	/* slides and individual slide should never exceed viewport width */
+	.slides, .slide { max-width:100vw; overflow-x:hidden; }
+	/* ensure images cannot overflow due to box-shadow or rounding */
+	img { max-width:100vw; }
+	/* improve compositing to avoid subpixel rendering causing 1px gaps */
+	.main-nav, .site-header, .site-main { -webkit-backface-visibility: hidden; backface-visibility: hidden; transform: translateZ(0); }
 }
 
 .container {
