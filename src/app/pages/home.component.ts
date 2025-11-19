@@ -18,8 +18,8 @@ import { CommonModule } from '@angular/common';
         <div class="hero-text">
           <h1><i>Thaís Roza</i></h1>
           <p class="lead">ARQUITETURA E URBANISMO</p>
-          <p class="lead">Crio projetos residenciais e comerciais que unem estética e funcionalidade, 
-            priorizando materiais naturais, iluminação e bem-estar.</p>
+          <p class="lead">Transformo ideias em espaços funcionais, modernos e cheios de personalidade — do jeitinho que você sempre sonhou.</p>
+          <br />
           <div class="hero-cta">
             <a routerLink="/portfolio" class="btn-cta">Ver Portfólio</a>
           </div>
@@ -80,7 +80,7 @@ import { CommonModule } from '@angular/common';
     .hero-visual img { width:460px; height:360px; object-fit:cover; border-radius:10px; box-shadow:0 30px 80px rgba(11,6,6,0.12); position:relative; z-index:1 }
     .hero-text { max-width:560px; color:var(--text-dark); text-align:right; animation:heroIn .6s ease both }
     .hero-text h1 { font-size:3.8rem; margin:0 0 0.6rem; font-family:'Merriweather Sans', sans-serif; color:var(--brand-deep); letter-spacing:0.6px }
-    .hero-text .lead { font-size:1.05rem; color:var(--muted); margin-bottom:1rem; font-style:normal }
+    .hero-text .lead { font-size:1rem; color:var(--muted); margin-bottom:1rem; font-style:normal }
     .hero-cta { margin:1.1rem 0 }
     .hero-contact { margin-top:1.2rem; text-align:right }
     .hero-contact p { margin:0 0 0.5rem 0; color:var(--muted) }

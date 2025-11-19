@@ -25,7 +25,7 @@ import { Component } from '@angular/core';
           </div>
         </div>
         <div class="about-photo" aria-hidden="true">
-          <img src="/img-home-page.png" alt="Thaís Roza" />
+          <img src="/img-home.png" alt="Thaís Roza" />
         </div>
       </div>
     </section>
