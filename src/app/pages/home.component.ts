@@ -139,11 +139,12 @@ import { CommonModule } from '@angular/common';
     }
     /* Ajustes gerais para tablet/mobile: empilhar hero e ajustar imagens */
     @media (max-width:900px) {
-      .hero-inner { grid-template-columns:1fr; gap:1rem; padding:2.2rem 0 }
+      .hero-inner { grid-template-columns:1fr; gap:1rem; padding:2.2rem 0; box-sizing:border-box; padding-left:1rem; padding-right:1rem }
       .hero-visual { justify-content:center }
       .hero-visual img { width:100%; max-width:220px; height:auto }
-      .hero-text { text-align:center }
-      .hero-text .lead { text-align:center; }
+      .hero-text { text-align:center; padding-left:0.6rem; padding-right:0.6rem }
+      .hero-text .lead { text-align:center; overflow-wrap:break-word; word-break:break-word; white-space:normal }
+      .hero-decor { display:none }
       .profile-card { margin-top:1rem }
     }
     @media (max-width:900px) {
