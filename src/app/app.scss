@@ -50,9 +50,9 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 	.header-inner { justify-content: center; position:relative;}
 	.brand { width:100%; display:flex; justify-content:center; align-items:center }
 	.header-inner .logo { margin:0; display:inline-flex; align-items:center }
-	.logo-mark { width:84px; height:84px }
+	.logo-mark { --logo-size:84px; width:var(--logo-size); height:var(--logo-size) }
 	.logo-text strong { font-size:1.12rem }
-	.nav-btn { position:absolute; left:8px; top:50%; transform:translateY(-50%); z-index:10002 }
+	.nav-btn { position:absolute; left:calc(50% - (var(--logo-size) / 2) - 12px); top:50%; transform:translateY(-50%); z-index:10002 }
 	.site-header > .container.header-inner { padding-left:2.4rem }
 
 	html, body, app-root, .site-main, .container { max-width:100%; overflow-x:hidden; width:100%; }
@@ -181,6 +181,11 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 	.header-inner { gap:1rem }
 	.hero h1 { font-size:2rem }
 	.hero-visuals { flex-direction:row; gap:0.6rem }
+}
+
+/* garantir alinhamento preciso do botão do menu com o logo em telas pequenas */
+@media (max-width:700px) {
+  .nav-btn { left:calc(50% - (var(--logo-size) / 2) - 12px) !important; transform:translateY(-50%) !important }
 }
 
 @media (max-width:700px) {
