@@ -117,16 +117,13 @@ import { CommonModule } from '@angular/common';
       .meta .tag { font-size:0.72rem; padding:0.18rem 0.45rem }
     }
 
-    @media (max-width:420px) {
-      .gallery { grid-template-columns: 1fr; gap:0.9rem }
-      .tile { border-radius:12px; aspect-ratio: 16/9; min-height:220px }
+    @media (max-width:480px) {
+      .gallery { grid-template-columns: 1fr; gap:0.9rem; padding-inline:0.8rem }
+      .tile { border-radius:12px; aspect-ratio: 16/9; min-height:240px }
       .meta { padding:0.4rem; border-radius:10px }
       .portfolio-head h2 { font-size:1.6rem }
-      .page.portfolio { padding-bottom:140px }
-      /* Fixar footer no rodapé em mobile e evitar que cubra conteúdo */
-      footer { position:fixed; left:0; right:0; bottom:0; z-index:9998; background:transparent; padding:18px 12px; display:flex; justify-content:center }
-      /* garantir que o footer tenha aparência legível sobre o background */
-      footer .footer-inner, footer .container { background:rgba(255,255,255,0.02); border-radius:12px; padding:6px 12px }
+      /* garantir espaço inferior para o footer sem fixá-lo */
+      .page.portfolio { padding-bottom:180px }
     }
 
     @media (max-width:340px) {
