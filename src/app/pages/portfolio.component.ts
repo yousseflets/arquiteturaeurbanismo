@@ -9,8 +9,8 @@ import { CommonModule } from '@angular/common';
     <section class="page portfolio">
       <div class="container">
         <div class="portfolio-head">
-          <h2>Projetos Profissionais</h2>
-          <p>Projetos selecionados — inspiração em arquitetura e interiores.</p>
+          <h2>Projetos</h2>
+          <p>Inspiração em arquitetura e interiores.</p>
         </div>
 
         <div class="portfolio-tools">
@@ -118,10 +118,15 @@ import { CommonModule } from '@angular/common';
     }
 
     @media (max-width:420px) {
-      .gallery { grid-template-columns: repeat(2, 1fr); gap:0.6rem }
-      .tile { border-radius:10px }
-      .meta { padding:0.36rem; border-radius:10px }
+      .gallery { grid-template-columns: 1fr; gap:0.9rem }
+      .tile { border-radius:12px; aspect-ratio: 16/9; min-height:220px }
+      .meta { padding:0.4rem; border-radius:10px }
       .portfolio-head h2 { font-size:1.6rem }
+      .page.portfolio { padding-bottom:140px }
+      /* Fixar footer no rodapé em mobile e evitar que cubra conteúdo */
+      footer { position:fixed; left:0; right:0; bottom:0; z-index:9998; background:transparent; padding:18px 12px; display:flex; justify-content:center }
+      /* garantir que o footer tenha aparência legível sobre o background */
+      footer .footer-inner, footer .container { background:rgba(255,255,255,0.02); border-radius:12px; padding:6px 12px }
     }
 
     @media (max-width:340px) {
