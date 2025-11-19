@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
     <section class="page portfolio">
       <div class="container">
         <div class="portfolio-head">
-          <h2>Portfólio</h2>
+          <h2>Projetos Profissionais</h2>
           <p>Projetos selecionados — inspiração em arquitetura e interiores.</p>
         </div>
 

@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
           <p class="lead">Transformo ideias em espaços funcionais, modernos e cheios de personalidade — do jeitinho que você sempre sonhou.</p>
           <br />
           <div class="hero-cta">
-            <a routerLink="/portfolio" class="btn-cta">Ver Portfólio</a>
+            <a routerLink="/portfolio" class="btn-cta">Ver Projetos</a>
           </div>
         </div>
       </div>
