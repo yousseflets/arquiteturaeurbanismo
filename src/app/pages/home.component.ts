@@ -155,7 +155,15 @@ import { CommonModule } from '@angular/common';
   `]
 })
 export class HomeComponent {
-  slides = ['/ambiente-clean.webp','/arquitetura-residencial.jpg','/espaços-multifuncionais.webp','/natureza-ambiente-interno.webp'];
+  slides = [
+    '/ambiente-clean.webp',
+    '/arquitetura_comercial-1.jpg',
+    '/arquitetura-contemporanea-residencial.webp',
+    '/arquitetura-residencial.webp',
+    '/espaços-multifuncionais.webp',
+    '/natureza-ambiente-interno.jpeg',
+    '/natureza-ambiente-interno.webp'
+  ];
   current = 0;
   autoplayInterval = 3000;
   private _autoplayTimer: any = null;
