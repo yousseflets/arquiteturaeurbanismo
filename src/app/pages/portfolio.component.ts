@@ -60,7 +60,7 @@ import { CommonModule } from '@angular/common';
     /* garantir que todas as miniaturas tenham o mesmo tamanho visual */
     .tile { position:relative; overflow:hidden; border-radius:16px; cursor:pointer; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); box-shadow:0 10px 30px rgba(15,10,10,0.06); transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease; aspect-ratio: 3/2; border:1px solid rgba(255,255,255,0.03) }
     .tile:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 30px 70px rgba(15,10,10,0.12) }
-    .tile img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform .45s ease }
+    .tile img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform .45s ease }
     .tile:hover img { transform:scale(1.05) }
 
     /* quando houver apenas 1 item, limitar largura e centralizar para facilitar análise */
@@ -118,12 +118,14 @@ import { CommonModule } from '@angular/common';
     }
 
     @media (max-width:480px) {
-      .gallery { grid-template-columns: 1fr; gap:0.9rem; padding-inline:0.8rem }
-      .tile { border-radius:12px; aspect-ratio: 16/9; min-height:240px }
+      .gallery { grid-template-columns: 1fr; gap:0.9rem; padding-inline:0.8rem; box-sizing:border-box; overflow:hidden }
+      .tile { border-radius:12px; aspect-ratio: 16/9; min-height:200px; width:100%; max-width:100vw; box-sizing:border-box; margin:0 auto; overflow:hidden }
       .meta { padding:0.4rem; border-radius:10px }
       .portfolio-head h2 { font-size:1.6rem }
       /* garantir espaço inferior para o footer sem fixá-lo */
       .page.portfolio { padding-bottom:180px }
+      /* garantir que a imagem nunca ultrapasse a largura da viewport */
+      .tile img { width:100%; height:auto; max-width:100%; object-fit:cover; object-position:center top; display:block }
     }
 
     @media (max-width:340px) {
