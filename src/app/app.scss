@@ -48,13 +48,11 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 	.site-header { padding-left: 0; padding-right: 0 }
 	.site-header > .container.header-inner { width:100%; max-width:100%; padding-left:0.6rem; padding-right:0.6rem }
 	.header-inner { justify-content: center; position:relative;}
-	/* usar grid no header em mobile para garantir alinhamento consistente */
-	.header-inner { display:grid; grid-template-columns:44px 1fr 44px; align-items:center; gap:0 }
-	.brand { grid-column:2; display:flex; justify-content:center; align-items:center }
+	.brand { width:100%; display:flex; justify-content:center; align-items:center }
 	.header-inner .logo { margin:0; display:inline-flex; align-items:center }
 	.logo-mark { --logo-size:84px; width:var(--logo-size); height:var(--logo-size) }
 	.logo-text strong { font-size:1.12rem }
-	.nav-btn { position:static; grid-column:1; justify-self:start; z-index:10002 }
+	.nav-btn { position:absolute; left:calc(50% - (var(--logo-size) / 2) - 12px); top:50%; transform:translateY(-50%); z-index:10002 }
 	.site-header > .container.header-inner { padding-left:2.4rem }
 
 	html, body, app-root, .site-main, .container { max-width:100%; overflow-x:hidden; width:100%; }
