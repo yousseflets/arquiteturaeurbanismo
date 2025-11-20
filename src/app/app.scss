@@ -162,7 +162,7 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 .contact-form { display:flex; flex-direction:column; gap:0.6rem; max-width:480px }
 .contact-form input, .contact-form textarea { padding:0.6rem; border:1px solid #e6e1df; border-radius:6px }
 
-.site-footer { padding:1.25rem 0; color:var(--muted); font-size:0.9rem; width:100%; overflow-x:hidden; }
+.site-footer { padding:1.25rem 0; color:var(--muted); font-size:0.9rem; width:100%; overflow-x:hidden; background: linear-gradient(  to bottom,  rgba(123, 22, 47, 0.146) 0%, rgba(255, 255, 255, 0.1) 100% ); }
 .site-footer .footer-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:100%; box-sizing:border-box; padding:0 1rem; }
 .site-footer .copy { color:var(--muted) }
 .site-footer .social { display:flex; gap:0.75rem }
