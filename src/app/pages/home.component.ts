@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
       <div class="container hero-inner">
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-decor"></div>
-          <img src="/img-home.png" alt="Projeto destaque" />
+          <img src="img-home.png" alt="img-home" />
         </div>
 
         <div class="hero-text">
@@ -66,7 +66,7 @@ import { CommonModule } from '@angular/common';
             </div>
         </div>
         <div class="visual">
-            <img src="/arquitetura-residencial.jpg" alt="Projeto destaque" />
+            <img src="/natureza-ambiente-interno.webp" alt="Projeto destaque" />
         </div>
         </div>
     </div>

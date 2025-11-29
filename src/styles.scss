@@ -9,7 +9,10 @@ body {
 	overflow-x: hidden;
 }
 
-app-root { display: block; min-height: 100vh; }
+app-root { display: flex; flex-direction: column; min-height: 100vh; }
+
+/* make the main area grow so footer stays at bottom on short pages/devices */
+.site-main { flex: 1 1 auto }
 
 /* Utility to ensure images never overflow their containers */
 img { max-width: 100%; height: auto; display: block }

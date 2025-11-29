@@ -139,7 +139,7 @@ body.no-scroll { overflow: hidden; touch-action: none; }
 .main-nav a.btn-cta { color:#fff; background:var(--brand-deep); padding:0.5rem 0.9rem; border-radius:8px; text-decoration:none; display:inline-block; font-weight:700 }
 .main-nav a.btn-cta:hover { background:var(--brand-warm); color:#fff }
 
-.site-main { background: transparent; min-height: calc(100vh - 140px); padding: 2.5rem 0 }
+.site-main { background: transparent; flex: 1 1 auto; padding: 2.5rem 0 }
 
 .hero { padding: 3.5rem 0 }
 .hero .hero-content { max-width:640px }

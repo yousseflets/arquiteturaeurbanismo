@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
           <h2>Quem sou eu?</h2>
           <br />
           <div class="info-cards">
-            <div class="card"><strong>Mogiana</strong><span> 36 anos</span></div>
+            <div class="card"><strong>Mogiana</strong><span> {{ age }} anos</span></div>
             <div class="card"><strong>Formada</strong><span>Arquitetura e Urbanismo</span></div>
             <div class="card"><strong>Designer</strong><span>Design de Interiores</span></div>
             <div class="card"><strong>Perfil</strong><span>Empresária • Comunicativa</span></div>
@@ -85,4 +85,28 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class AboutComponent {}
+export class AboutComponent {
+  // Data de nascimento no formato dd-mm-yyyy. Exemplo: '06-09-1989'
+  private readonly _birthStr = '06-09-1989';
+  private readonly _birth = this.parseBirth(this._birthStr);
+
+  // Retorna a idade calculada com base na data atual
+  get age(): number {
+    const today = new Date();
+    let years = today.getFullYear() - this._birth.getFullYear();
+    const m = today.getMonth() - this._birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < this._birth.getDate())) {
+      years--;
+    }
+    return years;
+  }
+
+  private parseBirth(d: string): Date {
+    // aceita dd-mm-yyyy ou dd/mm/yyyy
+    const sep = d.includes('-') ? '-' : '/';
+    const parts = d.split(sep).map(p => parseInt(p, 10));
+    if (parts.length !== 3 || parts.some(isNaN)) return new Date();
+    const [day, month, year] = parts;
+    return new Date(year, month - 1, day);
+  }
+}

@@ -122,8 +122,8 @@ import { CommonModule } from '@angular/common';
       .tile { border-radius:12px; aspect-ratio: 16/9; min-height:200px; width:100%; max-width:100vw; box-sizing:border-box; margin:0 auto; overflow:hidden }
       .meta { padding:0.4rem; border-radius:10px }
       .portfolio-head h2 { font-size:1.6rem }
-      /* garantir espaço inferior para o footer sem fixá-lo */
-      .page.portfolio { padding-bottom:180px }
+      /* evitar excesso de padding que causa comportamento inconsistente em alguns aparelhos */
+      .page.portfolio { padding-bottom: 2.2rem }
       /* garantir que a imagem nunca ultrapasse a largura da viewport */
       .tile img { width:100%; height:auto; max-width:100%; object-fit:cover; object-position:center top; display:block }
     }
